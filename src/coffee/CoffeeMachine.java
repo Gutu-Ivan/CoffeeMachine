@@ -2,24 +2,25 @@ package coffee;
 
 public class CoffeeMachine {
     private Boolean pay(Integer banknoteNominal){
-        if(banknoteNominal == 5 || banknoteNominal == 10){
-            return true;
-        }
-        return false;
+        return banknoteNominal == 5 || banknoteNominal == 10;
     }
 
     private String choose(Integer option){
         if(option == 1){
-            return "Coffee";
+            return " Coffee";
         } else if(option == 2){
-            return "Cappuccino";
+            return " Cappuccino";
         }
         return "Choose the right option";
     }
 
+    private Boolean wantMilk(String agree){
+        return agree == "Yes";
+    }
+
     private String addMilk(String choice) {
         if (choice == "Yes") {
-            return "Milk has added";
+            return " milk has added";
         }
         else if (choice == "No") {
             return "Without milk";
@@ -39,18 +40,24 @@ public class CoffeeMachine {
     }
 
     public void prepare(){
-        String coffeeType = "";
-        String addedMilk = "";
+        String coffeeType;
+        String addedMilk;
+        String addedSugar = "Some sugar";
+        String ok = "Yes";
         this.showInfo("Please insert banknote");
         if(this.pay(5)){
             this.showInfo("Please chose option");
             coffeeType = this.choose(1);
             addedMilk = this.addMilk("Yes");
-            this.showInfo("Would you like some milk in your" + coffeeType + " ?");
-            if (addedMilk == "Yes"){
-                this.showInfo(
-                        addedMilk + " to your " + coffeeType
-                );
+            this.showInfo("Do you want milk in your" + coffeeType + " ?");
+            if (this.wantMilk("Yes")){
+                this.showInfo("How about a coffee with sugar?");
+                if (ok == "Yes"){
+                    this.showInfo(addedSugar + " and" + addedMilk + " to your " + coffeeType);
+                }
+                else{
+                    this.showInfo(addedMilk + " to your " + coffeeType + " no sugar");
+                }
             }
             else{
                 this.showInfo(addMilk("No"));
