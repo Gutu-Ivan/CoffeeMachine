@@ -24,6 +24,9 @@ public class CoffeeMachine {
         else if (choice == 2) {
             return "Do not add";
         }
+        else{
+            return "Incorrect option";
+        }
     }
 
     private void showInfo(String message){
@@ -36,13 +39,17 @@ public class CoffeeMachine {
 
     public void prepare(){
         String coffeeType = "";
+        String addedMilk = "";
         this.showInfo("Please insert banknote");
         if(this.pay(5)){
             this.showInfo("Please chose option");
             coffeeType = this.choose(1);
-            this.showInfo("Do you want milk in your coffee?");
+            addedMilk = this.addMilk(1);
+            this.showInfo("Do you want milk in your" + coffeeType + "?");
             if (this.addMilk(1)){
-                this.showInfo(addMilk(1));
+                this.showInfo(
+                        addedMilk + "You choose is: " + coffeeType
+                );
             }
             else{
                 this.showInfo(addMilk(2));
