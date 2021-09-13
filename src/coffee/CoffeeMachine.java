@@ -47,7 +47,7 @@ public class CoffeeMachine {
             coffeeType = this.choose(1);
             addedMilk = this.addMilk("Yes");
             this.showInfo("Do you want milk in your" + coffeeType + " ?");
-            if (addedMilk == "Add milk"){
+            if (addedMilk == "Yes"){
                 this.showInfo(
                         addedMilk + " to your " + coffeeType
                 );
