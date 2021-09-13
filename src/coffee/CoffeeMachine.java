@@ -14,19 +14,17 @@ public class CoffeeMachine {
         } else if(option == 2){
             return "Cappuccino";
         }
-        return "Incorrect option";
+        return "Choose the right option";
     }
 
-    private String addMilk(Integer choice) {
-        if (choice == 1) {
-            return "Add milk";
+    private String addMilk(String choice) {
+        if (choice == "Yes") {
+            return "Milk has added";
         }
-        else if (choice == 2) {
-            return "Do not add";
+        else if (choice == "No") {
+            return "Without milk";
         }
-        else{
-            return "Incorrect option";
-        }
+        return "Choose the right option";
     }
 
     private void showInfo(String message){
@@ -36,6 +34,9 @@ public class CoffeeMachine {
     private String done(String coffeeType){
         return coffeeType;
     }
+    private String milk(String addedMilk){
+        return addedMilk;
+    }
 
     public void prepare(){
         String coffeeType = "";
@@ -44,25 +45,27 @@ public class CoffeeMachine {
         if(this.pay(5)){
             this.showInfo("Please chose option");
             coffeeType = this.choose(1);
-            addedMilk = this.addMilk(1);
-            this.showInfo("Do you want milk in your" + coffeeType + "?");
-            if (this.addMilk(1)){
+            addedMilk = this.addMilk("Yes");
+            this.showInfo("Do you want milk in your" + coffeeType + " ?");
+            if (addedMilk == "Add milk"){
                 this.showInfo(
-                        addedMilk + "You choose is: " + coffeeType
+                        addedMilk + " to your " + coffeeType
                 );
             }
             else{
-                this.showInfo(addMilk(2));
+                this.showInfo(addMilk("No"));
             }
             this.showInfo(
                     "You choose is: " + coffeeType
             );
             this.showInfo("Preparing...");
             this.showInfo(
-                    "Done: " + this.done(coffeeType)
+                    "Preparing...Done: " + this.done(coffeeType)
             );
         } else {
             this.showInfo("Please insert correct banknote");
         }
+
+
     }
 }
