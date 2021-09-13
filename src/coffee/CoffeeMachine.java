@@ -17,6 +17,15 @@ public class CoffeeMachine {
         return "Incorrect option";
     }
 
+    private String addMilk(Integer choice) {
+        if (choice == 1) {
+            return "Add milk";
+        }
+        else if (choice == 2) {
+            return "Do not add";
+        }
+    }
+
     private void showInfo(String message){
         System.out.println(message);
     }
@@ -31,6 +40,13 @@ public class CoffeeMachine {
         if(this.pay(5)){
             this.showInfo("Please chose option");
             coffeeType = this.choose(1);
+            this.showInfo("Do you want milk in your coffee?");
+            if (this.addMilk(1)){
+                this.showInfo(addMilk(1));
+            }
+            else{
+                this.showInfo(addMilk(2));
+            }
             this.showInfo(
                     "You choose is: " + coffeeType
             );
